@@ -1,0 +1,23 @@
+.two-navbar {
+    top: 0rem;
+    height: 42rem;
+    text-align: center !important;
+    text-indent: 0 !important;
+    background: transparent;
+}
+
+.two-navbar a {
+    padding: 8px 20px 8px 20px !important;
+    color: #cedce4;
+    display: block;
+    position: relative;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+
+.two-navbar a:hover,
+.two-navbar a.active{
+    background: #727cf5;
+    color: #fff !important;
+    transition: all .4s;
+}

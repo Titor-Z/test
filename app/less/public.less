@@ -1,0 +1,201 @@
+@import "config";
+
+html,body {
+  padding: 0;
+  margin: 0;
+}
+.container-fluid {
+  width: 100%;
+  overflow: auto;
+  font-weight: @font-default;
+  color: @font-default-color;
+  background: #e4e4e4;
+}
+
+// 最新活动
+.banner {
+  img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+.box {
+  //border: 1px solid red;
+  margin: 0 auto 4px auto;
+  padding: 26px 0;
+  background: #ffffff;
+
+  > * {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  h3 {
+    font-size: @font-size;
+    line-height: 17px;
+    border-bottom: 1px solid #E0DFDF;
+    padding: 8px 0;
+    font-weight: @bold;
+    margin: 0 auto 20px auto;
+  }
+
+  .content {
+    font-size: @font-size;
+    text-align: justify;
+  }
+
+
+//  门店照片 ppt组件
+  .ppt {
+    &-banner {
+      width: 270px;
+      height: 151px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    // 底部切换按钮
+    &-tab-box {
+      //border: 1px solid orange;
+      margin-top: 20px;
+      display: -webkit-box;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling:touch;
+      padding: 0;
+    }
+
+    &-tab {
+      list-style: none inside;
+      background: #e4e4e4;
+      display: block;
+      width: 68px;
+      height: 38px;
+      line-height: 38px;
+      text-align: center;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 8px;
+      margin-right: 8px;
+    }
+  }
+
+  // 服务标签
+  .badge {
+    li {
+      width: 48px;
+      height: 28px;
+      line-height: 28px;
+      font-size: @font-size;
+      color: #ffffff;
+      text-align: center;
+      border-radius: 4px;
+      display: inline-block;
+      background: #F49C45;
+      margin: 2px;
+    }
+  }
+}
+
+// 地图
+.map {
+  &-address {
+    width: 208px;
+    height: 48px;
+    overflow: hidden;
+    font-size: @font-size;
+    display: inline-block;
+    float: left;
+  }
+
+  &-open {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 16%);
+    display: inline-block;
+    float: right;
+  }
+  overflow: auto;
+}
+
+// 联系方式
+.contact {
+  font-size: @font-size;
+
+  &-list {
+    overflow: auto;
+
+    &-box {
+      //border: 1px solid blue;
+      width: 200px;
+      height: 50px;
+      float: left;
+    }
+
+    &-title {
+      font-size: 16px;
+      font-weight: @bold;
+      padding: 0;
+      margin: 0;
+      //border: 1px solid salmon;
+    }
+
+    &-content {
+      margin-top: 8px;
+      padding: 0;
+      //border: 1px solid red;
+    }
+
+    &-open {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      display: block;
+      float: right;
+    }
+  }
+
+  hr {
+    border-top: 1px solid @border-color;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin: 16px auto;
+  }
+}
+
+.introduction {
+  padding: 0;
+  list-style: inside none;
+  column-count: 2;
+
+  @font-size: 12px;
+  li {
+    width: 150px;
+    height: 24px;
+    line-height: 24px;
+    font-size: @font-size;
+    font-weight: @bold;
+
+    span {
+      margin-right: 4px;
+      color: @gray;
+      font-weight: @font-default;
+    }
+  }
+}
+
+.useSpec {
+  @font-size: 12px;
+  font-size: @font-size;
+}
+
+
+@import "list";
+
+@import "details";

@@ -1,0 +1,61 @@
+@import "config";
+
+// 列表外盒
+.list {
+  width: @list-width;
+  margin: 40px auto;
+  padding: 0;
+  list-style: none inside;
+  //overflow: hidden;
+
+  // 列表盒子
+  &-box {
+    height: @list-box-height;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    a {
+      display: block;
+      overflow: auto;
+      color: @font-default-color;
+    }
+  }
+
+  // 列表图
+  &-img {
+    width: 100%;
+    height: @list-img-height;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 #000000;
+  }
+
+  // 底部内容
+  &-content {
+    height: 40px;
+    overflow: auto;
+  }
+
+  // 标题
+  &-title {
+    font-size: @font-size;
+    height: inherit;
+    line-height: 40px;
+    width: 180px;
+    float: left;
+    margin: 0;
+    padding: 0;
+  }
+
+  // 价格
+  &-price {
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    float: right;
+    font-size: @font-size;
+    font-weight: @bold;
+    text-align: right;
+    color: @price-color;
+  }
+}
