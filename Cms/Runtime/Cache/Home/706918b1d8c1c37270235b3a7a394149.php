@@ -19,6 +19,8 @@
     <!-- build:css -->
     <link href="/cms/Public/css/app.min.css" rel="stylesheet">
     <!-- endbuild -->
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 </head>
 
@@ -129,7 +131,7 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                             <!-- item-->
                             <div class=" dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">欢迎你 !</h6>
+                                <h6 class="text-overflow m-0">Hi <?php echo ($username); ?>!</h6>
                             </div>
 
                             <!-- item-->
@@ -194,16 +196,16 @@
 
                                         <div class="media-body">
 
-                                            <h3 class="mt-1 mb-2 text-white">新天地招待所 🍔</h3>
+                                            <h3 class="mt-1 mb-2 text-white"><?php echo ($name); ?></h3>
                                             <p class="font-13 text-white-50"> 商家名称 </p>
 
                                             <ul class="mb-0 list-inline text-light">
                                                 <li class="list-inline-item mr-3">
-                                                    <h5 class="mb-1">酒店 · 招待所</h5>
+                                                    <h5 class="mb-1"><?php echo ($industry); ?> · <?php echo ($entity); ?></h5>
                                                     <p class="mb-0 font-13 text-white-50">行业分类</p>
                                                 </li>
                                                 <li class="list-inline-item">
-                                                    <h5 class="mb-1">早上 8:00 - 晚上 11:00</h5>
+                                                    <h5 class="mb-1"><?php echo ($open_hour); ?></h5>
                                                     <p class="mb-0 font-13 text-white-50">营业时间</p>
                                                 </li>
 
@@ -232,10 +234,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="header-title mt-0 mb-3">门店介绍</h4>
-                                <p class="text-muted font-13">
-                                    新天地招待所始创于1999年，总部设在广州。主要从事住宿。主要服务有 钟点房、住宿、热水等等。
-                                    除了为客人提供舒适的用餐环境外，还可以提供顾客休息。
-                                </p>
+                                <p class="text-muted font-13"><?php echo ($description); ?></p>
 
                                 <hr>
 
@@ -277,7 +276,7 @@
                                 <div class="card text-white bg-info">
                                     <div class="card-body">
                                         <div class="toll-free-box text-center">
-                                            <h4> <i class="mdi mdi-phone"></i> 客服电话 : 0310-123456</h4>
+                                            <h4> <i class="mdi mdi-phone"></i> 客服电话 : <?php echo ($ke_tel); ?></h4>
                                         </div>
                                     </div> <!-- end card-body-->
                                 </div>
@@ -288,7 +287,7 @@
                                 <div class="card text-white bg-success">
                                     <div class="card-body">
                                         <div class="toll-free-box text-center">
-                                            <h4> <i class="mdi mdi-weather-cloudy"></i> 微信号 : 13245646</h4>
+                                            <h4> <i class="mdi mdi-weather-cloudy"></i> 微信号 : <?php echo ($wechat); ?></h4>
                                         </div>
                                     </div> <!-- end card-body-->
                                 </div>

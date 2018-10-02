@@ -19,6 +19,8 @@
     <!-- build:css -->
     <link href="/cms/Public/css/app.min.css" rel="stylesheet">
     <!-- endbuild -->
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 </head>
 
@@ -129,7 +131,7 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                             <!-- item-->
                             <div class=" dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">欢迎你 !</h6>
+                                <h6 class="text-overflow m-0">Hi <?php echo ($username); ?>!</h6>
                             </div>
 
                             <!-- item-->
@@ -191,23 +193,24 @@
 
                                 <form class="form-horizontal" method="post" action="#">
                                     <div class="form-group row mb-3">
-                                        <label for="inputEmail3" class="col-3 col-form-label"> 手机号 </label>
+                                        <label for="phone" class="col-3 col-form-label text-right"> 手机号 </label>
                                         <div class="col-9">
-                                            <input type="email" class="form-control" id="inputEmail3" value="18849405122" readonly>
+                                            <input type="tel" class="form-control" id="phone" value="<?php echo ($phone); ?>" readonly>
+                                            <small class="form-text text-danger">手机号是登录的唯一凭证</small>
                                         </div>
                                     </div>
 
                                     <div class="form-group row mb-3">
-                                        <label for="inputPassword3" class="col-3 col-form-label"> 密码 </label>
+                                        <label for="password" class="col-3 col-form-label text-right"> 密码 </label>
                                         <div class="col-9">
-                                            <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                                            <input type="password" class="form-control" id="password" placeholder="请输入密码">
                                         </div>
                                     </div>
 
                                     <div class="form-group row mb-3">
-                                        <label for="inputPassword5" class="col-3 col-form-label"> 重复密码 </label>
+                                        <label for="password2" class="col-3 col-form-label text-right"> 重复密码 </label>
                                         <div class="col-9">
-                                            <input type="password" class="form-control" id="inputPassword5" placeholder="请重复输入密码">
+                                            <input type="password" class="form-control" id="password2" placeholder="请再输入一次密码">
                                         </div>
                                     </div>
 

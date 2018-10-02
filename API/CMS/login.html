@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>登录</title>
+    <link rel="stylesheet" href="less/bootstrap.min.css">
+    <link rel="stylesheet" href="less/main.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-box mt-5">
+            <img src="images/logo.svg" alt="logo">
+        </div>
+
+        <h2 class="text-center mt-3 mb-3">系统登录</h2>
+
+        <form action="http://192.168.0.100:81/API/Api/login">
+            <div class="form-group">
+                <input class="form-control text-center" name="mobile" type="text" placeholder="请输入手机号码" required>
+                <span class="form-text text-muted"><i class="info"></i>公司内部的员工手机号码</span>
+            </div>
+            <div class="form-group">
+                <input class="form-control text-center" name="password" type="text" placeholder="请输入密码" required>
+                <span class="form-text text-muted"><i class="info"></i>密码一般在6～16位</span>
+            </div>
+
+            <div class="form-group clearfix">
+                <button id="submit" class="col-5 float-left btn btn-primary" type="button">登录</button>
+                <button class="col-5 float-right btn btn-default">返回</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/public.js"></script>
+    <script>
+        (function () {
+            var required = $('[required]'),
+                button = $("#submit"),
+                action = $("form").attr('action');
+
+            button.click(function () {
+                var form     = $("form"),
+                    mobile   = form.find("[name=mobile]"),
+                    password = form.find("[name=password]");
+
+                var data = {
+                    'mobile'    : valSet(mobile),
+                    'password'  : valSet(password)
+                };
+
+                if (nullSet([mobile,password])===false){
+                    return false;
+                }
+
+                removeArrNull(data);
+
+                $.post(action,{'data': data}, function (result) {
+                    console.log(result);
+                    if(result.state === false) {
+                        resBindControl(mobile, result);
+                    }else {
+                        if (result.href) window.location.href = result.href;
+                    }
+                });// Ajax End.
+            });
+        })();
+    </script>
+</body>
+</html>

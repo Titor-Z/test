@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="/cms/Public/images/help-icon.svg">
+    <link rel="shortcut icon" href="/Cms/Public/images/help-icon.svg">
 
     <!-- App css -->
     <!-- build:css -->
-    <link href="/cms/Public/css/app.min.css" rel="stylesheet">
+    <link href="/Cms/Public/css/app.min.css" rel="stylesheet">
 
     <!-- endbuild -->
     <link type="text/css" rel="stylesheet" href="chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/content.css">
-    <link type="text/css" rel="stylesheet" charset="UTF-8" href="/cms/Public/css/translateelement.css">
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="/Cms/Public/css/translateelement.css">
 </head>
 
 <body class="authentication-bg">
@@ -29,7 +29,7 @@
                     <!-- Logo -->
                     <div class="card-header pt-4 pb-4 text-center bg-primary">
                         <a href="http://coderthemes.com/hyper/index.html">
-                            <span><img src="/cms/Public/images/logo.png" alt="" height="18"></span>
+                            <span><img src="/Cms/Public/images/logo.png" alt="" height="18"></span>
                         </a>
                     </div>
 
@@ -43,10 +43,10 @@
                         <form action="<?php echo $href ?>" method="post">
 
                             <div class="form-group mb-3">
-                                <label for="username">用户名</label>
-                                <input name="username" class="form-control" type="text" id="username" required
-                                       placeholder="用户名">
-                                <small class="form-text text-muted">请使用已经注册的商家用户名进行登陆</small>
+                                <label for="username">手机号</label>
+                                <input name="username" class="form-control" type="tel" id="username" required
+                                       placeholder="请输入商家手机号">
+                                <small class="form-text text-muted">使用已经注册的商家手机号进行登陆</small>
                             </div>
 
                             <div class="form-group mb-3">
@@ -56,7 +56,7 @@
                                 <label for="password">密码</label>
                                 <input name="password" class="form-control" type="password" id="password" required
                                        placeholder="请输入密码">
-                                <small class="form-text text-muted"></small>
+                                <small class="form-text text-muted">密码为6-16位</small>
                             </div>
 
                             <div class="form-group mb-3">
@@ -98,15 +98,15 @@
 </footer>
 
 <!-- bundle -->
-<script src="/cms/Public/js/app.min.js"></script>
+<script src="/Cms/Public/js/app.min.js"></script>
 
 <!-- third party js -->
-<script src="/cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/cms/Public/js/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/Cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/Cms/Public/js/jquery-jvectormap-world-mill-en.js"></script>
 <!-- third party js ends -->
 
 <!-- Include Data Script -->
-<script src="/cms/Public/js/public.js"></script>
-<script src="/cms/Public/js/login.js"></script>
+<script src="/Cms/Public/js/public.js"></script>
+<script src="/Cms/Public/js/login.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ class LoginController extends Controller {
 
     public function showLogin() {
         $this->assign([
-            'href'=> API_HOST.'login'
+            'href'=> U("Api/userLogin"),
         ]);
         $this->display('Index:login');
     }

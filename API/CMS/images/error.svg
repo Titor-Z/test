@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 144 144">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-1 {
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        fill: #f84568;
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        filter: url(#矩形_46);
+      }
+    </style>
+    <filter id="矩形_46" x="0" y="0" width="144" height="144" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#c7455f"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <rect id="矩形_45" data-name="矩形 45" class="cls-1" width="64" height="64" transform="translate(6225 894)"/>
+    </clipPath>
+  </defs>
+  <g id="组_76" data-name="组 76" transform="translate(-100 -176)">
+    <g id="符号_3_2" data-name="符号 3 – 2" transform="translate(-3010 -1358)">
+      <g class="cls-5" transform="matrix(1, 0, 0, 1, 3110, 1534)">
+        <rect id="矩形_46-2" data-name="矩形 46" class="cls-2" width="120" height="120" rx="60" transform="translate(12 12)"/>
+      </g>
+    </g>
+    <g id="蒙版组_9" data-name="蒙版组 9" class="cls-3" transform="translate(-6085 -678)">
+      <g id="md-close" transform="translate(6202.02 871.02)">
+        <path id="路径_19" data-name="路径 19" class="cls-4" d="M86.98,29.379l-6.4-6.4-25.6,25.6-25.6-25.6-6.4,6.4,25.6,25.6-25.6,25.6,6.4,6.4,25.6-25.6,25.6,25.6,6.4-6.4-25.6-25.6Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

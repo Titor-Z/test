@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>商户注册</title>
+    <link rel="stylesheet" href="less/bootstrap.min.css">
+    <link rel="stylesheet" href="less/main.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <a href="#" class="return-btn">
+            <img src="images/return.svg" alt="<">
+        </a>
+    </div>
+
+    <div class="row">
+        <section class="content col-12">
+            <form action="">
+                <section class="section">
+                    <h1 class="h1">商户注册</h1>
+                    <div class="form-group">
+                        <input name="mobile" class="form-control" type="text" placeholder="请输入要注册的商家账户" maxlength="11" minlength="11" required>
+                        <span class="form-text text-muted"><i class="info"></i>商家账户为手机号码</span>
+                    </div>
+                    <div class="form-group">
+                        <input name="password" class="form-control" type="text" placeholder="请设置登录密码" required>
+                        <span class="form-text text-muted"><i class="info"></i>登录密码应在6-16位之间</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h1 class="h1">商家信息</h1>
+                    <div class="form-group">
+                        <input name="sname" class="form-control" type="text" placeholder="请输入经营资质主体">
+                        <span class="form-text text-muted"><i class="info"></i>营业执照商家名称</span>
+                    </div>
+                    <div class="form-group">
+                        <input name="snumber" class="form-control" type="text" placeholder="请输入经营资质证件号">
+                        <span class="form-text text-muted"><i class="info"></i>营业资格证号码</span>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="saddress" class="form-control" rows="10" placeholder="请输入商家住所"></textarea>
+                        <span class="form-text text-muted"><i class="info"></i>营业场所</span>
+                    </div>
+                    <div class="form-group">
+                        <input name="scert" class="form-control" type="file" placeholder="请上传营业执照">
+                        <span class="form-text text-muted"><i class="info"></i>营业执照</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h1 class="h1">服务信息</h1>
+                    <div class="form-group">
+                        <input name="start-time" class="form-control" type="date" placeholder="服务开始时间">
+                        <span class="form-text text-muted"><i class="info"></i>购买服务开始时间</span>
+                    </div>
+                    <div class="form-group">
+                        <input name="end-time" class="form-control" type="date" placeholder="服务截止时间">
+                        <span class="form-text text-muted"><i class="info"></i>服务到期时间</span>
+                    </div>
+                    <div class="form-group">
+                        <select name="product" class="form-control">
+                            <option value="0">请选择产品</option>
+                            <option value="1">产品1</option>
+                        </select>
+                        <span class="form-text text-muted"><i class="info"></i>所使用的产品</span>
+                    </div>
+                    <div class="form-group">
+                        <select name="pay-way" class="form-control">
+                            <option value="0">请选择付款方式</option>
+                            <option value="1">现金</option>
+                            <option value="2">微信</option>
+                            <option value="3">支付宝</option>
+                            <option value="4">银行卡</option>
+                        </select>
+                        <span class="form-text text-muted"><i class="info"></i>付款方式</span>
+                    </div>
+
+                    <button id="submit" class="btn btn-primary col-4" type="button">注册</button>
+                </section>
+            </form>
+        </section>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/public.js"></script>
+<script>
+    (function () {
+        var user_res_control = $("[name='mobile']"),
+            submit = $("#submit");
+        const API_HOST = 'http://192.168.0.100:81/API/Api/';
+
+
+        // 商家信息检索
+        user_res_control.blur(function () {
+            var data = {
+                'mobile': valSet(user_res_control)
+            };
+
+            if (nullSet([user_res_control]) === false) {
+                return false;
+            }
+            removeArrNull(data);
+
+            $.post(API_HOST + 'user/has', {'data': data}, function (result) {
+                resBindControl(user_res_control, result);
+                if (result.state === false) {
+                    errorState(user_res_control, result.text);
+                    submit.attr('disabled', true);
+                    return false;
+                } else {
+                    successState(user_res_control, result.text);
+                    submit.attr('disabled', false);
+                }
+            });
+        });
+
+
+        // 数据提交
+        submit.click(function () {
+
+            var user_res_control = $("[name='mobile']"),
+                password    = $("[name='password']"),
+                sname       = $("[name='sname']"),
+                snumber     = $("[name='snumber']"),
+                saddress    = $("[name='saddress']"),
+                scert       = $("[name='scert']"),
+                start_time  = $("[name='start-time']"),
+                end_time    = $("[name='end-time']"),
+                product     = $("[name='product']"),
+                pay_way     = $("[name='pay-way']");
+
+            var data = {
+                mobile : valSet(user_res_control),
+                password : valSet(password),
+                store_name: valSet(sname),
+                store_number: valSet(snumber),
+                store_address: valSet(saddress),
+                store_cert: valSet(scert),
+                start_time: valSet(start_time),
+                end_time: valSet(end_time),
+                product: valSet(product),
+                pay_way: valSet(pay_way),
+            };
+
+            if (nullSet([user_res_control,password])===false){
+                return false;
+            }
+
+            removeArrNull(data);
+
+            $.post(API_HOST + 'store/create', {data: data}, function (result) {
+                if (result.state === true) {
+                    submit.attr('disabled', true);
+                    window.location.href = 'result.html#true';
+                }else{
+                    submit.attr('disabled', false);
+                    window.location.href = 'result.html#false';
+                }
+                console.log(result);
+            });
+
+
+        });
+
+
+    })();
+</script>
+
+</body>
+</html>

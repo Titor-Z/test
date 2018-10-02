@@ -70,7 +70,7 @@
 
 
                     <!-- 右侧内容 Start. -->
-                    <div class="col-lg-10">
+                    <div class="col-lg-10" id="set">
                         <div class="card">
                             <div class="card-body">
 
@@ -79,7 +79,7 @@
                                 <div class="form-group row mb-3">
                                     <label for="inputPassword3" class="col-3 col-form-label text-right">门店名称</label>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" id="" placeholder="请输入店铺名称">
+                                        <input type="text" class="form-control" id="" placeholder="请输入店铺名称" value="{$name}">
                                         <span class="text-muted font-13">e.g "KFC"</span>
                                     </div>
                                 </div>
@@ -90,11 +90,11 @@
                                         <div class="input-group">
                                             <select class="form-control">
                                                 <option value="0">请选择行业分类</option>
-                                                <option value="1">餐饮</option>
-                                                <option value="2">住宿</option>
-                                                <option value="3">美容</option>
+                                                <?php for ($i=0; $i< count($industry); $i++) { ?>
+                                                    <option value="{$industry[$i]["id"]}">{$industry[$i]["name"]}</option>
+                                                <?php }?>
                                             </select>
-                                            <input type="text" class="form-control" placeholder="请输入行业实体">
+                                            <input type="text" class="form-control" placeholder="请输入行业实体" value="{$entity}">
                                         </div>
                                         <span class="text-muted font-13">e.g "餐饮·快餐店"</span>
 
@@ -105,14 +105,14 @@
                                     <div class="form-group row mb-3">
                                         <label for="" class="col-3 col-form-label text-right">门店介绍</label>
                                         <div class="col-9">
-                                            <textarea type="email" class="form-control" placeholder="请输入店铺简介" rows="5"></textarea>
+                                            <textarea type="email" class="form-control" placeholder="请输入店铺简介" rows="5">{$description}</textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword3" class="col-3 col-form-label text-right">主营服务</label>
                                         <div class="col-9">
-                                            <input type="text" class="form-control" id="inputPassword3" placeholder="请输入主营服务">
+                                            <input type="text" class="form-control" id="inputPassword3" placeholder="请输入主营服务" value="{$services}">
                                             <span class="text-muted font-13">e.g "热水|洗澡|泡澡" （多个服务，请用 | 分割）</span>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword5" class="col-3 col-form-label text-right">营业时间</label>
                                         <div class="col-9">
-                                            <textarea type="email" class="form-control" placeholder="请输入营业时间" rows="5"></textarea>
+                                            <textarea type="email" class="form-control" placeholder="请输入营业时间" rows="5">{$open_hour}</textarea>
                                             <span class="text-muted font-13">e.g "周一到周日 早上 8:00 - 晚上 9:00"</span>
                                         </div>
                                     </div>
@@ -128,8 +128,10 @@
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword5" class="col-3 col-form-label text-right">联系方式</label>
                                         <div class="col-9 input-group">
-                                            <input type="password" class="form-control" id="inputPassword5" placeholder="请输入 电话 \ 手机号 ">
-                                            <input type="password" class="form-control" placeholder="请输入 微信号 ">
+                                            <div class="input-group">
+                                                <input type="tel" class="form-control" id="inputPassword5" placeholder="请输入 电话 \ 手机号" value="{$ke_tel}">
+                                                <input type="text" class="form-control" placeholder="请输入 微信号" value="{$wechat}">
+                                            </div>
                                         </div>
                                     </div>
 

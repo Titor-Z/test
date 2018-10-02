@@ -9,16 +9,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="/cms/Public/images/help-icon.svg">
+    <link rel="shortcut icon" href="/Cms/Public/images/help-icon.svg">
 
     <!-- third party css -->
-    <link href="/cms/Public/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="/Cms/Public/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
     <!-- third party css end -->
 
     <!-- App css -->
     <!-- build:css -->
-    <link href="/cms/Public/css/app.min.css" rel="stylesheet">
+    <link href="/Cms/Public/css/app.min.css" rel="stylesheet">
     <!-- endbuild -->
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 </head>
 
@@ -35,10 +37,10 @@
             <!-- LOGO -->
             <a href="<?php echo ($home); ?>" class="logo text-center mb-4">
                 <span class="logo-lg">
-                    <img src="/cms/Public/images/logo.png" alt="" height="16">
+                    <img src="/Cms/Public/images/logo.png" alt="" height="16">
                 </span>
                 <span class="logo-sm">
-                    <img src="/cms/Public/images/logo_sm.png" alt="" height="16">
+                    <img src="/Cms/Public/images/logo_sm.png" alt="" height="16">
                 </span>
             </a>
 
@@ -93,7 +95,7 @@
                 <a href="javascript: void(0);" class="float-right close-btn text-white">
                     <i class="mdi mdi-close"></i>
                 </a>
-                <img src="/cms/Public/images/help-icon.svg" height="90" alt="Helper Icon Image"/>
+                <img src="/Cms/Public/images/help-icon.svg" height="90" alt="Helper Icon Image"/>
                 <h5 class="mt-3">无限制访问</h5>
                 <p class="mb-3">升级以计划访问无限制的报告</p>
                 <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">升级</a>
@@ -124,12 +126,12 @@
                         <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#"
                            role="button" aria-haspopup="false"
                            aria-expanded="false">
-                            <img src="/cms/Public/images/avatar-1.jpg" alt="user-image" class="rounded">
+                            <img src="/Cms/Public/images/avatar-1.jpg" alt="user-image" class="rounded">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                             <!-- item-->
                             <div class=" dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">欢迎你 !</h6>
+                                <h6 class="text-overflow m-0">Hi <?php echo ($username); ?>!</h6>
                             </div>
 
                             <!-- item-->
@@ -281,24 +283,24 @@
 <!-- END wrapper -->
 
 <!-- bundle -->
-<script src="/cms/Public/js/app.min.js"></script>
+<script src="/Cms/Public/js/app.min.js"></script>
 
 <!-- third party js -->
-<script src="/cms/Public/js/Chart.bundle.js"></script>
-<script src="/cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/cms/Public/js/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/Cms/Public/js/Chart.bundle.js"></script>
+<script src="/Cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/Cms/Public/js/jquery-jvectormap-world-mill-en.js"></script>
 <!-- third party js ends -->
 
 <!-- demo app -->
-<script src="/cms/Public/js/demo.dashboard.js"></script>
+<script src="/Cms/Public/js/demo.dashboard.js"></script>
 <!-- end demo js-->
 
 <!-- Include Data Script -->
-<script src="/cms/Public/js/template.js"></script>
-<!--<script src="/cms/Public/script/login-statue.js"></script>-->
-<!--<script src="/cms/Public/script/config.js"></script>-->
-<!--<script src="/cms/Public/script/left-sidebar.js"></script>-->
-<!--<script src="/cms/Public/script/index.js"></script>-->
+<script src="/Cms/Public/js/template.js"></script>
+<!--<script src="/Cms/Public/script/login-statue.js"></script>-->
+<!--<script src="/Cms/Public/script/config.js"></script>-->
+<!--<script src="/Cms/Public/script/left-sidebar.js"></script>-->
+<!--<script src="/Cms/Public/script/index.js"></script>-->
 
 </body>
 </html>

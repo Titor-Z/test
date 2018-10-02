@@ -14,7 +14,7 @@ define('APP_PATH','./');
 // 关闭自动生动index.html
 define('BUILD_DIR_SECURE', false);
 
-define('API_HOST', 'http://localhost:81/API/CMS/');
+define('API_HOST', 'http://localhost:81/test/API/CMS/');
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

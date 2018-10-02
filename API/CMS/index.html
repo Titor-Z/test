@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>控制台</title>
+    <link rel="stylesheet" href="less/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="less/main.min.css">
+</head>
+<body>
+
+    <div class="container">
+       <div class="row">
+           <a href="storeRes.html" class="list-box mt-5">
+               <img class="list-box-img" src="images/ruzhu.svg" alt="">
+               <h6 class="list-box-title">商户入驻</h6>
+           </a>
+       </div>
+        <div class="row">
+            <a href="#" class="list-box">
+                <img class="list-box-img" src="images/chengyuan.svg" alt="">
+                <h6 class="list-box-title">成员管理</h6>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        (function () {
+            $(document).ready(function () {
+                $.get("http://192.168.0.100:81/API/Api", function (res) {
+                    if (res.state === false) window.location = 'login.html';
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+@control-height: 42px;
+
+/*
+.btn {
+  width: 100px;
+  height: @control-height;
+  line-height: 42px;
+  border-radius: 4px;
+  text-decoration: none;
+  background: linear-gradient(to right, @primary , @second);
+  color: @white;
+  font-size: @px * 4;
+  .setBlock;
+  float: left;
+  .text-center;
+  .fontRegular;
+  outline: none;
+
+
+  &-primary {
+    background: @primary;
+  }
+}
+
+.btn-default {
+  background: @gray-25;
+  border: 1px solid @gray-25;
+  color: @gray-100;
+}
+
+
+.input-group input {
+  width: @containerWidth;
+  height: @control-height;
+  line-height: @control-height;
+  border: 2px solid @gray-50;
+  .setBlock;
+  .border-radius();
+  outline: none;
+  font-size: @px * 4;
+  .fontRegular;
+  color: @gray-100;
+
+  &:focus {
+    border-color: @primary;
+  }
+}*/
+
+.form-control {
+  box-shadow: none !important;
+  border-width: 2px;
+  height: @control-height;
+  &:focus {
+    border-color: @primary;
+  }
+}
+
+
+.btn {
+  height: @control-height;
+  line-height: @control-height;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  &-primary {
+    background: linear-gradient(to right, @primary , @second);
+  }
+
+  &-default {
+    background: @gray-25;
+  }
+}
+
+.form {
+  &-text {
+    font-size: 14px;
+    overflow: auto;
+  }
+
+  &-group {
+    margin-bottom: 6px;
+  }
+}
+
+textarea {
+  height: @control-height * 2.5 !important;
+}
+
+.info {
+  width: 16px;
+  height: 16px;
+  display: block;
+  background: url("../images/info.svg") no-repeat center center;
+  background-size: cover;
+  float: left;
+  margin: 4px 4px auto auto;
+  zoom: .9;
+}

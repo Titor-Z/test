@@ -21,7 +21,7 @@
 
         $.post(action,{'data': data}, function (result) {
             console.info(result);
-            window.location.href = result.href;
+            if (result.data.href) window.location.href = result.data.href;
         });// Ajax End.
     });
 })();
