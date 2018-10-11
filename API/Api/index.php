@@ -1,10 +1,12 @@
 <?php
 require_once "../vendor/autoload.php";
-require_once "Class/autoLoad.php";
+require_once "./Class/autoLoad.php";
 
 use Store\Admin\Api\Admin,
     Store\Admin\Api\User,
-    Store\Admin\Api\Store;
+    Store\Admin\Api\Store,
+    Store\Admin\Api\Upload;
+
 
 /*
  * 是否登录
@@ -22,8 +24,6 @@ Flight::route('GET /', function () {
         ]);
     }
 });
-
-
 
 /*
  * 管理员登录
@@ -83,13 +83,10 @@ Flight::route('POST /login', function () {
     }
 });
 
-
-
 /*
  * 商户注册查询
  */
 Flight::route('POST /user/has', function () {
-    header("Access-Control-Allow-Origin", "*");
     # 验证输入：
     @$data = $_POST['data'];
     # 数据传输正确：
@@ -121,13 +118,22 @@ Flight::route('POST /user/has', function () {
     }
 });
 
-
-
 /*
  * 开户（商铺入驻）
  */
 Flight::route('POST /store/create', function () {
-    @$data = $_POST['data'];
+
+
+
+    $data = [
+        'mobile'        => $_POST['mobile'],
+        'password'      => $_POST["password"],
+        'start_time'    => $_POST["start-time"],
+        'end_time'      => $_POST["end-time"],
+        'store_name'    => $_POST["sname"],
+        'store_number'  => $_POST["snumber"],
+        'store_address' => $_POST["saddress"],
+    ];
 
     # 创建账户：
     $userData = [
@@ -153,40 +159,134 @@ Flight::route('POST /store/create', function () {
 
     $createStoreResult = $store->create($storeData);
 
+    $uploadResult=[];
+    $createStoreResultData=[];
+
+
+    @$file = $_FILES['scert'];
+    if ($file) {
+        Upload::setSize('10M');
+        $upload = new Upload();
+        $upload->pathResolver();
+
+        try{
+            $uploadResult = @$upload->fileUpload($file, @$data["store_name"]);
+        }catch (Exception $e){
+            $uploadResultData = [
+                'state' => false,
+                'msg'   => '营业执照上传失败'
+            ];
+        }
+
+        if($uploadResult){
+            $uploadResultData = [
+                'state' => true
+            ];
+        }
+    }
+
     if ($createStoreResult) {
-        Flight::json([
-            'state'=> true,
-        ]);
+        $createStoreResultData = [
+            'state' => true,
+            'msg' => '开户成功'
+        ];
     }
     else {
+        $createStoreResultData = [
+            'state' => false,
+            'msg' => '开户失败'
+        ];
+    }
+
+    Flight::json(array_merge($uploadResultData, $createStoreResultData));
+});
+
+
+Flight::route('POST /test', function () {
+    @$file = $_FILES['scert'];
+    if ($file) {
+        $upload = new Upload();
+        $upload->pathResolver();
+        Upload::setSize('10M');
+        $result = @$upload->fileUpload($file,date("Ymdhis"));
+        if($result){
+            Flight::json([
+                'state' => true,
+            ]);
+        }
+        else {
+            Flight::json([
+                'state' => false,
+            ]);
+        }
+    }
+    else{
         Flight::json([
-            'state'=> false,
+            'state' => false,
         ]);
     }
 });
 
+Flight::route('POST /user/upload', function (){
+    if ($_FILES['file']) {
+        $data = [
+            'id' => $_POST['id'],
+            'class' => $_POST['class'],
+            'file' => $_FILES['file']
+        ];
 
+        $upload = new Upload();
+        Upload::setPath('./Upload/'.$data['id'].DIRECTORY_SEPARATOR.$data['class']);
+        Upload::setSize('10M');
+        $upload->pathResolver();
 
-Flight::route('/test', function () {
-    $arr1 = [
-        'start' => null,
-        'end'   => 0
-    ];
+        try{
+            $result = @$upload->fileUpload($data['file'],date('Ymdhis'));
+        }catch (Exception $e) {
+            Flight::json([
+                'state' => false,
+                'msg' => '上传失败'
+            ]);
+        }
+        // 上传
 
-    $arr = [
-        'business_address' => 132,
-        'service_time' => array_filter($arr1),
-    ];
+        // 写入数据库
+        $info = Upload::getUploadInfo();
+        try{
+            $saveCallBack = $upload->saveToDB([
+                'id' => $data['id'], // 店铺id
+                'class'=> $data['class'], // 分类（表）
+                'file' => $info // 保存的文件数据
+            ]);
+        }catch (Exception $e) {
+            $upload->fileDel($info);
+            Flight::json([
+                'state' => false,
+                'msg' => '上传失败'
+            ]);
+        }
 
-    $arr2 = array_filter($arr);
-
-    if (array_key_exists('service_time', $arr2)){
-        $arr2['service_time'] = json_encode($arr2['service_time']);
+        if ($saveCallBack) {
+            Flight::json([
+               'state' => true,
+               'msg' => '上传成功'
+            ]);
+        } else {
+            $upload->fileDel($info);
+            Flight::json([
+                'state' => false,
+                'msg' => '上传失败'
+            ]);
+        }
+    }
+    else{
+        Flight::json([
+            'state' => false,
+            'msg' => '请选择文件'
+        ]);
     }
 
 
-    echo "<pre>";
-    print_r(array_filter($arr2));
 });
 
 # 启动应用

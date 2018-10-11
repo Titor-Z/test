@@ -15,12 +15,12 @@ function autoLoad($className) {
     # 当前类名的命名空间：
     $nameSpace = 'Store\Admin\Api\\';
     # 文件名：类名去掉命名空间标示，就是文件名
-    $fileName = str_replace($nameSpace, '', $className);
+    $fileName = str_replace('\\', DIRECTORY_SEPARATOR, str_ireplace($nameSpace, '', $className));
     # 文件完整路径：当前目录下/文件名.Class.php；
     $file = __DIR__.DIRECTORY_SEPARATOR.$fileName.'.Class.php';
 
     # 引入文件
-    include $file;
+    require_once $file;
 }
 
 # 注册加载函数：

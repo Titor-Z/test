@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>编辑产品</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="__PUBLIC__/images/help-icon.svg">
+
+    <!-- App css -->
+    <!-- build:css -->
+    <link href="__PUBLIC__/css/app.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet">
+    <!-- endbuild -->
+    <style>
+        .content-page{margin-left: 0 !important;}
+    </style>
+</head>
+
+<body>
+
+<!-- Begin page -->
+<div class="wrapper">
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- 中间内容 Start.-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="{$store}">产品</a></li>
+                                    <li class="breadcrumb-item active">编辑</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">产品</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <link rel="stylesheet" href="__PUBLIC__/css/custom.css">
+                <div class="row">
+
+                    <!-- 左侧导航菜单 开始. -->
+                    <div class="two-navbar col-lg-2">
+
+                        <div class="slimscroll-menu">
+                            <!--- Sidemenu -->
+                            <ul class="metismenu side-nav">
+
+                                <li class="side-nav-item">
+                                    <a href="javascript:void(0)" class="side-nav-link text-dark">
+                                        <span> 基本设置 </span>
+                                    </a>
+                                </li>
+                                <li class="side-nav-item">
+                                    <a href="{$nav_storePic}" class="side-nav-link text-dark">
+                                        <span> 产品照片 </span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="clearfix"></div>
+
+                        </div> <!-- Sidebar -left -->
+                    </div> <!-- 左侧导航菜单 End. -->
+
+
+                    <!-- 右侧内容 Start. -->
+                    <div class="col-lg-10" id="set">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h4 class="mb-3 header-title"> 基本设置 </h4>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">产品名称</label>
+                                    <div class="col-9">
+                                        <input id="j_s_name" type="text" class="form-control" placeholder="请输入产品名称"
+                                               value="{$info['name']}">
+                                        <span class="text-muted font-13">e.g "大床房"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">价格</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_price" type="text" class="form-control" placeholder="请输入价格"
+                                                   value="{$info['price']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "¥200/晚"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">上网</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_online" type="text" class="form-control" placeholder="请输入上网方式"
+                                                   value="{$info['online']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "WIFI"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">卫浴</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_bath" type="text" class="form-control" placeholder="请输入卫浴方式"
+                                                   value="{$info['bath']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "独立/无"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">窗户</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_window" type="text" class="form-control" placeholder="请输入是否有窗户"
+                                                   value="{$info['window']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "有/无"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">可住人数</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_capacity" type="text" class="form-control" placeholder="请输入可住的人数"
+                                                   value="{$info['capacity']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "2人"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">房间面积</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_area" type="text" class="form-control" placeholder="请输入房间面积"
+                                                   value="{$info['area']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "20m<sup>2</sup>"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">楼层</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_floor" type="text" class="form-control" placeholder="请输入房间所在的楼层"
+                                                   value="{$info['floor']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "3层"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">床型</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_model" type="text" class="form-control" placeholder="请输入床型"
+                                                   value="{$info['model']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "单人床 1.2x2.0m 2张"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">早餐</label>
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <input id="j_s_breakfast" type="text" class="form-control" placeholder="请输入早餐"
+                                                   value="{$info['breakfast']}">
+                                        </div>
+                                        <span class="text-muted font-13">e.g "无/牛奶"</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-3">
+                                    <label class="col-3 col-form-label text-right">注意事项</label>
+                                    <div class="col-9">
+                                            <textarea id="j_s_other" type="email" class="form-control"
+                                                      placeholder="请输入注意事项" rows="5">{$info['other']}</textarea>
+                                        <span class="text-muted font-13">e.g "1、请在14:00之后入住并于次日12:00之前退房；如需提前入住或延迟退房，请咨询商家2、入住需交押金，金额以前台为准3、如需发票，请向前台索取"</span>
+                                    </div>
+                                </div>
+
+                                <input id="j_s_id" type="hidden" value="{$info['id']}">
+
+                                <div class="form-group mb-0 justify-content-end row">
+                                    <div class="col-9">
+                                        <button onclick="saveProduct(this)" id="storeBashSave" data-href="{$saveUrl}" type="button"
+                                                class="btn btn-info">确定
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>  <!-- end card-body -->
+                        </div> <!-- 基本设置 End. -->
+                    </div> <!-- 右侧内容 End. -->
+
+                </div>
+
+            </div>
+            <!-- container -->
+
+        </div>
+        <!-- content -->
+
+        <!-- 引入公共头文件  -->
+        <include file="common/footer"/>

@@ -3,7 +3,7 @@
     "require": {
         "mikecao/flight": ">1.0.0",
         "catfan/medoo": ">1.0.0",
-        "qiniu/php-sdk": ">7.0.0"
+        "symfony/filesystem": ">1.0.0"
     },
     "authors": [
         {

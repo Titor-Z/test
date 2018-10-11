@@ -18,6 +18,7 @@ class IndexController extends ApiController {
      * 公共模版赋值
      */
     public function init() {
+        // 所有模版初始化时，都会判断登录状态
         self::$user = self::getUser($_SESSION['mer_user']);
         $this->assign([
             'logout' => U("Api/userLogout"),
@@ -26,6 +27,8 @@ class IndexController extends ApiController {
             'storeEdit' => U("Store/edit"),
             'home'  => U("Index/index"),
             'username' => self::$user['name'],
+            'store_edit' => U("Store/edit"),
+            'product' => U("Product/home")
         ]);
     }
 

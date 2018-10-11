@@ -12,15 +12,15 @@
     <link rel="shortcut icon" href="/Cms/Public/images/help-icon.svg">
 
     <!-- third party css -->
-    <link href="/Cms/Public/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!--<link href="/Cms/Public/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">-->
     <!-- third party css end -->
 
     <!-- App css -->
     <!-- build:css -->
     <link href="/Cms/Public/css/app.min.css" rel="stylesheet">
+    <link href="/Cms/Public/css/custom.css" rel="stylesheet">
     <!-- endbuild -->
-    <!-- Vue JS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 
 </head>
 
@@ -60,7 +60,7 @@
                 <!-- 我的店 Start -->
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="seven sev-store"></i>
+                        <i class="mdi mdi-home-account"></i>
                         <span> 我的店 </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -72,6 +72,14 @@
                             <a href="<?php echo ($storeEdit); ?>">编辑</a>
                         </li>
                     </ul>
+                </li>
+
+                <!-- 产品 -->
+                <li class="side-nav-item">
+                    <a href="<?php echo ($product); ?>" class="side-nav-link">
+                        <i class="mdi mdi-reproduction"></i>
+                        <span> 产品 </span>
+                    </a>
                 </li>
 
                 <!-- 设置 Start -->
@@ -186,7 +194,7 @@
 
                 <div class="row">
 
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-sm-4 col-12">
                         <div class="card bg-primary">
                             <div class="card-body">
                                 <div class="text-center">
@@ -201,7 +209,7 @@
                     </div> <!-- 选项 End. -->
 
                     <!-- 选项 Start. -->
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-sm-4">
                         <div class="card bg-danger">
                             <div class="card-body">
                                 <div class="text-center">
@@ -216,7 +224,7 @@
                         </div>
                     </div> <!-- 选项 End. -->
 
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-sm-4">
                         <div class="card bg-success">
                             <div class="card-body">
                                 <div class="text-center">
@@ -231,7 +239,7 @@
                         </div>
                     </div> <!-- 选项 End. -->
 
-                    <div class="col-xl-2">
+                    <div class="col-xl-2 col-sm-4">
                         <div class="card bg-warning">
                             <div class="card-body">
                                 <div class="text-center">
@@ -284,23 +292,11 @@
 
 <!-- bundle -->
 <script src="/Cms/Public/js/app.min.js"></script>
-
-<!-- third party js -->
-<script src="/Cms/Public/js/Chart.bundle.js"></script>
 <script src="/Cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/Cms/Public/js/jquery-jvectormap-world-mill-en.js"></script>
-<!-- third party js ends -->
-
-<!-- demo app -->
-<script src="/Cms/Public/js/demo.dashboard.js"></script>
-<!-- end demo js-->
-
-<!-- Include Data Script -->
-<script src="/Cms/Public/js/template.js"></script>
-<!--<script src="/Cms/Public/script/login-statue.js"></script>-->
-<!--<script src="/Cms/Public/script/config.js"></script>-->
-<!--<script src="/Cms/Public/script/left-sidebar.js"></script>-->
-<!--<script src="/Cms/Public/script/index.js"></script>-->
-
+<script src="/Cms/Public/js/public.js"></script>
+<script src="/Cms/Public/js/layer.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/Cms/Public/js/main.js" type="module"></script>
+<script src="/Cms/Public/js/product.js"></script>
 </body>
 </html>

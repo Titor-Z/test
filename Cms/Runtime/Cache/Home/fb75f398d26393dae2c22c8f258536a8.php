@@ -1,5 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?><!-- 引入公共头文件  -->
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -9,18 +8,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="/cms/Public/images/help-icon.svg">
+    <link rel="shortcut icon" href="/Cms/Public/images/help-icon.svg">
 
     <!-- third party css -->
-    <link href="/cms/Public/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!--<link href="/Cms/Public/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">-->
     <!-- third party css end -->
 
     <!-- App css -->
     <!-- build:css -->
-    <link href="/cms/Public/css/app.min.css" rel="stylesheet">
+    <link href="/Cms/Public/css/app.min.css" rel="stylesheet">
+    <link href="/Cms/Public/css/custom.css" rel="stylesheet">
     <!-- endbuild -->
-    <!-- Vue JS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 
 </head>
 
@@ -37,10 +36,10 @@
             <!-- LOGO -->
             <a href="<?php echo ($home); ?>" class="logo text-center mb-4">
                 <span class="logo-lg">
-                    <img src="/cms/Public/images/logo.png" alt="" height="16">
+                    <img src="/Cms/Public/images/logo.png" alt="" height="16">
                 </span>
                 <span class="logo-sm">
-                    <img src="/cms/Public/images/logo_sm.png" alt="" height="16">
+                    <img src="/Cms/Public/images/logo_sm.png" alt="" height="16">
                 </span>
             </a>
 
@@ -60,7 +59,7 @@
                 <!-- 我的店 Start -->
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="seven sev-store"></i>
+                        <i class="mdi mdi-home-account"></i>
                         <span> 我的店 </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -72,6 +71,14 @@
                             <a href="<?php echo ($storeEdit); ?>">编辑</a>
                         </li>
                     </ul>
+                </li>
+
+                <!-- 产品 -->
+                <li class="side-nav-item">
+                    <a href="<?php echo ($product); ?>" class="side-nav-link">
+                        <i class="mdi mdi-reproduction"></i>
+                        <span> 产品 </span>
+                    </a>
                 </li>
 
                 <!-- 设置 Start -->
@@ -95,7 +102,7 @@
                 <a href="javascript: void(0);" class="float-right close-btn text-white">
                     <i class="mdi mdi-close"></i>
                 </a>
-                <img src="/cms/Public/images/help-icon.svg" height="90" alt="Helper Icon Image"/>
+                <img src="/Cms/Public/images/help-icon.svg" height="90" alt="Helper Icon Image"/>
                 <h5 class="mt-3">无限制访问</h5>
                 <p class="mb-3">升级以计划访问无限制的报告</p>
                 <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">升级</a>
@@ -126,7 +133,7 @@
                         <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#"
                            role="button" aria-haspopup="false"
                            aria-expanded="false">
-                            <img src="/cms/Public/images/avatar-1.jpg" alt="user-image" class="rounded">
+                            <img src="/Cms/Public/images/avatar-1.jpg" alt="user-image" class="rounded">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                             <!-- item-->
@@ -169,7 +176,7 @@
                 </button> <!-- 搜索框 End. -->
             </div>
             <!-- end Topbar -->
-
+<!-- 引入公共头文件  -->
 
             <!-- 中间内容 Start.-->
             <div class="container-fluid">
@@ -181,7 +188,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="<?php echo ($store); ?>">我的店</a></li>
-                                    <li class="breadcrumb-item active">修改</li>
+                                    <li class="breadcrumb-item active">编辑</li>
                                 </ol>
                             </div>
                             <h4 class="page-title">店铺信息</h4>
@@ -201,28 +208,18 @@
                             <ul class="metismenu side-nav">
 
                                 <li class="side-nav-item">
-                                    <a href="index.html" class="side-nav-link text-dark">
-                                        <span> 店铺介绍 </span>
+                                    <a href="javascript:void(0)" class="side-nav-link text-dark">
+                                        <span> 基本设置 </span>
                                     </a>
                                 </li>
                                 <li class="side-nav-item">
-                                    <a href="index.html" class="side-nav-link text-dark">
+                                    <a href="<?php echo ($nav_storePic); ?>" class="side-nav-link text-dark">
                                         <span> 门店照片 </span>
                                     </a>
                                 </li>
                                 <li class="side-nav-item">
                                     <a href="index.html" class="side-nav-link text-dark">
                                         <span> 主营服务 </span>
-                                    </a>
-                                </li>
-                                <li class="side-nav-item">
-                                    <a href="index.html" class="side-nav-link text-dark">
-                                        <span> 营业时间 </span>
-                                    </a>
-                                </li>
-                                <li class="side-nav-item">
-                                    <a href="index.html" class="side-nav-link text-dark">
-                                        <span> 联系方式 </span>
                                     </a>
                                 </li>
                                 <li class="side-nav-item">
@@ -248,7 +245,7 @@
                                 <div class="form-group row mb-3">
                                     <label for="inputPassword3" class="col-3 col-form-label text-right">门店名称</label>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" id="" placeholder="请输入店铺名称" value="<?php echo ($name); ?>">
+                                        <input id="j_s_name" type="text" class="form-control" placeholder="请输入店铺名称" value="<?php echo ($name); ?>">
                                         <span class="text-muted font-13">e.g "KFC"</span>
                                     </div>
                                 </div>
@@ -257,13 +254,12 @@
                                     <label for="inputPassword3" class="col-3 col-form-label text-right">行业分类</label>
                                     <div class="col-9">
                                         <div class="input-group">
-                                            <select class="form-control">
-                                                <option value="0">请选择行业分类</option>
+                                            <select id="j_s_industry_id" class="form-control">
                                                 <?php for ($i=0; $i< count($industry); $i++) { ?>
-                                                    <option value="<?php echo ($industry[$i]["id"]); ?>"><?php echo ($industry[$i]["name"]); ?></option>
+                                                    <option <?php if($industry[$i]["id"] == $industry_id) echo "seleced"; ?> value='<?php echo ($industry[$i]["id"]); ?>'><?php echo ($industry[$i]["name"]); ?></option>
                                                 <?php }?>
                                             </select>
-                                            <input type="text" class="form-control" placeholder="请输入行业实体" value="<?php echo ($entity); ?>">
+                                            <input id="j_s_industry_entity" type="text" class="form-control" placeholder="请输入行业实体" value="<?php echo ($entity); ?>">
                                         </div>
                                         <span class="text-muted font-13">e.g "餐饮·快餐店"</span>
 
@@ -274,14 +270,14 @@
                                     <div class="form-group row mb-3">
                                         <label for="" class="col-3 col-form-label text-right">门店介绍</label>
                                         <div class="col-9">
-                                            <textarea type="email" class="form-control" placeholder="请输入店铺简介" rows="5"><?php echo ($description); ?></textarea>
+                                            <textarea id="j_s_description" type="email" class="form-control" placeholder="请输入店铺简介" rows="5"><?php echo ($description); ?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword3" class="col-3 col-form-label text-right">主营服务</label>
                                         <div class="col-9">
-                                            <input type="text" class="form-control" id="inputPassword3" placeholder="请输入主营服务" value="<?php echo ($services); ?>">
+                                            <input id="j_s_services" type="text" class="form-control" placeholder="请输入主营服务" value="<?php echo ($services); ?>">
                                             <span class="text-muted font-13">e.g "热水|洗澡|泡澡" （多个服务，请用 | 分割）</span>
                                         </div>
                                     </div>
@@ -289,7 +285,7 @@
                                     <div class="form-group row mb-3">
                                         <label for="inputPassword5" class="col-3 col-form-label text-right">营业时间</label>
                                         <div class="col-9">
-                                            <textarea type="email" class="form-control" placeholder="请输入营业时间" rows="5"><?php echo ($open_hour); ?></textarea>
+                                            <textarea id="j_s_opening_hours" type="email" class="form-control" placeholder="请输入营业时间" rows="5"><?php echo ($open_hour); ?></textarea>
                                             <span class="text-muted font-13">e.g "周一到周日 早上 8:00 - 晚上 9:00"</span>
                                         </div>
                                     </div>
@@ -298,34 +294,28 @@
                                         <label for="inputPassword5" class="col-3 col-form-label text-right">联系方式</label>
                                         <div class="col-9 input-group">
                                             <div class="input-group">
-                                                <input type="tel" class="form-control" id="inputPassword5" placeholder="请输入 电话 \ 手机号" value="<?php echo ($ke_tel); ?>">
-                                                <input type="text" class="form-control" placeholder="请输入 微信号" value="<?php echo ($wechat); ?>">
+                                                <input id="j_s_ke_tel" type="tel" class="form-control" placeholder="请输入 电话 \ 手机号" value="<?php echo ($ke_tel); ?>">
+                                                <input id="j_s_wechat" type="text" class="form-control" placeholder="请输入 微信号" value="<?php echo ($wechat); ?>">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mb-3">
-                                        <label for="inputPassword5" class="col-3 col-form-label text-right">店铺位置</label>
-                                        <div class="col-9 input-group">
-                                            <div id="gmaps-basic" class="gmaps col-lg-12">1313</div>
-                                        </div>
-                                    </div>
+                                    <!--<div class="form-group row mb-3">-->
+                                        <!--<label for="inputPassword5" class="col-3 col-form-label text-right">店铺位置</label>-->
+                                        <!--<div class="col-9 input-group">-->
+                                            <!--<div id="gmaps-basic" class="gmaps col-lg-12">1313</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
 
                                     <div class="form-group mb-0 justify-content-end row">
                                         <div class="col-9">
-                                            <button type="submit" class="btn btn-info">确定</button>
+                                            <button id="storeBashSave" data-href="<?php echo ($saveUrl); ?>" type="button" class="btn btn-info">确定</button>
                                         </div>
                                     </div>
                                 </form>
 
                             </div>  <!-- end card-body -->
                         </div> <!-- 基本设置 End. -->
-
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3 header-title"> 门店照片 </h4>
-                            </div>
-                        </div>
                     </div> <!-- 右侧内容 End. -->
 
                 </div>
@@ -367,24 +357,12 @@
 <!-- END wrapper -->
 
 <!-- bundle -->
-<script src="/cms/Public/js/app.min.js"></script>
-
-<!-- third party js -->
-<script src="/cms/Public/js/Chart.bundle.js"></script>
-<script src="/cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/cms/Public/js/jquery-jvectormap-world-mill-en.js"></script>
-<!-- third party js ends -->
-
-<!-- demo app -->
-<script src="/cms/Public/js/demo.dashboard.js"></script>
-<!-- end demo js-->
-
-<!-- Include Data Script -->
-<script src="/cms/Public/js/template.js"></script>
-<!--<script src="/cms/Public/script/login-statue.js"></script>-->
-<!--<script src="/cms/Public/script/config.js"></script>-->
-<!--<script src="/cms/Public/script/left-sidebar.js"></script>-->
-<!--<script src="/cms/Public/script/index.js"></script>-->
-
+<script src="/Cms/Public/js/app.min.js"></script>
+<script src="/Cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/Cms/Public/js/public.js"></script>
+<script src="/Cms/Public/js/layer.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/Cms/Public/js/main.js" type="module"></script>
+<script src="/Cms/Public/js/product.js"></script>
 </body>
 </html>

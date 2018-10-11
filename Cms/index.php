@@ -16,6 +16,9 @@ define('BUILD_DIR_SECURE', false);
 
 define('API_HOST', 'http://localhost:81/test/API/CMS/');
 
+define('ADMIN_HOST', 'http://192.168.0.100:81/API/Api/');
+define('FILE_HOST', 'http://192.168.0.100:81/API/Api/Upload/');
+
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
 

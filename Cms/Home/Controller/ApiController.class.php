@@ -1,6 +1,8 @@
 <?php
 namespace Home\Controller;
+use http\Exception\BadMethodCallException;
 use Think\Controller;
+use Think\Exception;
 
 class ApiController extends Controller {
 
@@ -186,6 +188,75 @@ class ApiController extends Controller {
     public function userLogout() {
         unset($_SESSION['mer_user']);
         $this->redirect("Login/index");
+    }
+
+    // 查找门店照片
+    public static function getStorePic(array $data) {
+        $dbResult = M('pic_store')->where('store_id='.I('session.mer_user'))->getField('pic');
+
+        $result = null;
+        foreach (array_filter( explode('|', $dbResult) ) as $key=> $value) {
+            $result .= FILE_HOST.I('session.mer_user').'/store/'.$value.'|';
+        }
+
+        return array_filter( explode('|', $result) );
+    }
+
+    public static function saveStoreBash($storeId, $data) {
+        if ($storeId == null) E("没有传入任何店铺ID");
+        try{
+            M('store')->where('id='.$storeId)->save($data);
+        }catch (E $e){
+            return 0;
+        }
+        return 1;
+    }
+
+    // 获取店铺的所有产品信息
+    public static function getProductInfo($storeId = null) {
+        if ($storeId == null) E("没有传入任何店铺ID");
+        try{
+            $fromDB = M('product_hotel')->where('store_id='.$storeId)->select();
+        }catch (E $e){
+            return false;
+        }
+        return $fromDB;
+    }
+
+    // 删除指定的产品
+    public static function delProduct($productId = null) {
+        if ($productId == null) E("没有传入任何产品ID");
+        try{
+            $inDB = M('product_hotel')->where('id='.$productId)->delete();
+        }catch (E $e){
+            return false;
+        }
+
+        return $inDB;
+    }
+
+    // 获取指定产品信息
+    public static function getProduct($productId = null) {
+        if ($productId == null) E("没有传入任何产品ID");
+        try{
+            $fromDB = M('product_hotel')->where('id='.$productId)->find();
+        }catch (E $e){
+            return false;
+        }
+
+        return $fromDB;
+    }
+
+    // 更新指定产品的信息
+    public static function setProduct($productId, $data) {
+        if (!isset($productId)) E("没有传入任何产品ID");
+        try{
+            $fromDB = M('product_hotel')->where('id='.$productId)->save($data);
+        }catch (E $e){
+            return false;
+        }
+
+        return $fromDB;
     }
 
 }

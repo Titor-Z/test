@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件上传</title>
+    <link rel="stylesheet" href="less/bootstrap.min.css">
+    <link rel="stylesheet" href="less/main.css">
+    <style>
+        section {
+            display: none;
+        }
+        #true:target,
+        #false:target{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <a href="#" class="return-btn">
+                <img src="images/return.svg" alt="<">
+            </a>
+        </div>
+        <form target="iframe" action="http://192.168.0.100:81/API/Api/test" class="section mt-5" name="form" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <input id="file" name="scert" class="form-control" type="file" placeholder="请上传营业执照" required>
+                <span id="tip" class="form-text text-muted"><i class="info"></i>营业执照</span>
+            </div>
+            <button name="save" id="save" type="button" class="btn btn-primary col-4 mt-2">上传</button>
+        </form>
+
+        <section id="true" class="section img-section text-center">
+            <img class="img-section-img" src="images/success.svg" alt="成功">
+            <h2>上传完成</h2>
+            <a class="btn btn-primary" href="#">首页</a>
+        </section>
+
+        <section id="false" class="section img-section text-center">
+            <img class="img-section-img" src="images/error.svg" alt="成功">
+            <h2>上传失败</h2>
+            <a class="btn btn-primary" href="">重新上传</a>
+        </section>
+    </div>
+
+    <iframe name="iframe" src="#" frameborder="0" class="hidden"></iframe>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script type="module">
+        import { home } from './js/main.js';
+        $("#true").find(".btn").attr('href', `${home}`);
+        $(".return-btn").attr('href', `${home}`);
+
+        {
+            let pulse = 0;
+            let btn = document.querySelector("#save");
+            btn.onclick =  () => {
+                pulse = 1;
+                let form = document.querySelector("[name='form']");
+                let fileControl = document.querySelector("#file");
+
+                if(fileControl.value) {
+                    form.submit();
+                    form.className += ` hidden`;
+                    document.querySelector(".return-btn").className += ` hidden`;
+                }
+                else{
+                    let tip = document.querySelector("#tip");
+                    fileControl.className += ` is-invalid`;
+                    tip.className += `form-text text-danger`;
+                    tip.textContent = '你还未选择要上传的文件';
+                }
+
+            }
+
+
+            let frame = document.querySelector("iframe");
+            frame.onload = () => {
+                if ( pulse > 0 ) {
+                    let body =frame.contentWindow.document;
+                    let content = body.querySelector("body").textContent;
+                    let result = JSON.parse(content);
+                    if (result.state == true) {
+                        window.location.href = '#true';
+                    }else{
+                        window.location.href = '#false';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

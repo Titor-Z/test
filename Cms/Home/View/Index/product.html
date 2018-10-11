@@ -1,0 +1,65 @@
+<!-- 引入公共头文件  -->
+<include file="common/header" />
+
+
+<!-- 中间内容 Start.-->
+<div id="container" class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">产品</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+
+        <!-- form Start.-->
+        <form class="hidden" hidden id="j_storePicForm" target="storePicForm" action="{$uploadAction}" enctype="multipart/form-data" method="post">
+            <input name="file" type="file" accept="image/jpeg, image/jpg, image/png">
+            <input name="id" value="{$id}" type="hidden">
+            <input name="class" value="{$class}" type="hidden">
+        </form>
+        <!-- form End. -->
+
+        <div class="col-xl-4">
+            <div id="j_picShow" class="card bg-warning">
+                <div class="card-body pic-card">
+                    <div class="text-center">
+                        <h3 class="font-weight-normal text-white mt-2 mb-3"><i class="mdi mdi-plus mdi-48px"></i></h3>
+                        <a id="productAdd" data-href="{$addUrl}" href="javascript:void(0)" class="btn btn-outline-light btn-sm mb-1 mt-2">添加</a>
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div>
+        </div> <!-- 图片 End. -->
+
+
+        <?php for($i=0; $i<count($resultArr); $i++) { ?>
+        <!-- 产品 Start. -->
+        <div class="col-xl-4">
+            <div class="card pic-box">
+                <img class="card-img-top pic-img" src="__PUBLIC__/images/pic-8.jpg" alt="">
+                <!-- 按钮 Start. -->
+                <div class="method-layer">
+                    <div class="text-center">
+                        <h4 class="font-weight-normal text-white mt-5 mb-2">{$resultArr[$i]["name"]}</h4>
+                        <a onclick="editProduct(this)" data-href="{$editUrl}" data-productId="{$resultArr[$i]['id']}" href="javascript:void(0)" class="edit-product btn btn-outline-light btn-sm mb-1 mt-2">编辑</a>
+                        <a onclick="delProduct(this)" data-href="{$delUrl}" data-productId="{$resultArr[$i]['id']}" href="javascript:void(0)" class="btn btn-outline-danger btn-sm mb-1 mt-2">删除</a>
+                    </div>
+                </div> <!-- 按钮 End. -->
+            </div>
+        </div> <!-- 产品 End. -->
+        <?php } ?>
+
+    </div> <!-- end row -->
+</div>
+<!-- container -->
+
+</div>
+<!-- content -->
+
+<!-- 引入公共头文件  -->
+<include file="common/footer" />

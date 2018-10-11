@@ -320,6 +320,11 @@ h2 {
 .btn:focus {
   box-shadow: none !important;
 }
+.hidden {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
 /*
 .btn {
   width: 100px;
@@ -436,6 +441,7 @@ textarea {
   -moz-border-radius: 8px;
   border-radius: 8px;
   margin-bottom: 16px;
+  box-shadow: 0 0 8px #A185FF;
 }
 .list-box-img {
   width: 40px;

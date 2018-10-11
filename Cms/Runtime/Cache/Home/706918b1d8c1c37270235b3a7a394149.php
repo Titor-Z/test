@@ -9,18 +9,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="/cms/Public/images/help-icon.svg">
+    <link rel="shortcut icon" href="/Cms/Public/images/help-icon.svg">
 
     <!-- third party css -->
-    <link href="/cms/Public/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!--<link href="/Cms/Public/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">-->
     <!-- third party css end -->
 
     <!-- App css -->
     <!-- build:css -->
-    <link href="/cms/Public/css/app.min.css" rel="stylesheet">
+    <link href="/Cms/Public/css/app.min.css" rel="stylesheet">
+    <link href="/Cms/Public/css/custom.css" rel="stylesheet">
     <!-- endbuild -->
-    <!-- Vue JS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 
 </head>
 
@@ -37,10 +37,10 @@
             <!-- LOGO -->
             <a href="<?php echo ($home); ?>" class="logo text-center mb-4">
                 <span class="logo-lg">
-                    <img src="/cms/Public/images/logo.png" alt="" height="16">
+                    <img src="/Cms/Public/images/logo.png" alt="" height="16">
                 </span>
                 <span class="logo-sm">
-                    <img src="/cms/Public/images/logo_sm.png" alt="" height="16">
+                    <img src="/Cms/Public/images/logo_sm.png" alt="" height="16">
                 </span>
             </a>
 
@@ -60,7 +60,7 @@
                 <!-- 我的店 Start -->
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="seven sev-store"></i>
+                        <i class="mdi mdi-home-account"></i>
                         <span> 我的店 </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -72,6 +72,14 @@
                             <a href="<?php echo ($storeEdit); ?>">编辑</a>
                         </li>
                     </ul>
+                </li>
+
+                <!-- 产品 -->
+                <li class="side-nav-item">
+                    <a href="<?php echo ($product); ?>" class="side-nav-link">
+                        <i class="mdi mdi-reproduction"></i>
+                        <span> 产品 </span>
+                    </a>
                 </li>
 
                 <!-- 设置 Start -->
@@ -95,7 +103,7 @@
                 <a href="javascript: void(0);" class="float-right close-btn text-white">
                     <i class="mdi mdi-close"></i>
                 </a>
-                <img src="/cms/Public/images/help-icon.svg" height="90" alt="Helper Icon Image"/>
+                <img src="/Cms/Public/images/help-icon.svg" height="90" alt="Helper Icon Image"/>
                 <h5 class="mt-3">无限制访问</h5>
                 <p class="mb-3">升级以计划访问无限制的报告</p>
                 <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">升级</a>
@@ -126,7 +134,7 @@
                         <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#"
                            role="button" aria-haspopup="false"
                            aria-expanded="false">
-                            <img src="/cms/Public/images/avatar-1.jpg" alt="user-image" class="rounded">
+                            <img src="/Cms/Public/images/avatar-1.jpg" alt="user-image" class="rounded">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                             <!-- item-->
@@ -191,7 +199,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <span class="float-left m-2 mr-4">
-                                            <img src="/cms/Public/images/avatar-1.jpg" style="height: 100px;" alt="" class="rounded-circle img-thumbnail">
+                                            <img src="/Cms/Public/images/avatar-1.jpg" style="height: 100px;" alt="" class="rounded-circle img-thumbnail">
                                         </span>
 
                                         <div class="media-body">
@@ -249,7 +257,7 @@
 
                                 <div class="card d-block mb-0">
                                     <h4 class="header-title mt-0 mb-3">门店照片</h4>
-                                    <img class="card-img-top" src="/cms/Public/images/small-4.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="/Cms/Public/images/small-4.jpg" alt="Card image cap">
                                 </div>
                             </div> <!-- end card-body-->
                         </div>
@@ -334,24 +342,12 @@
 <!-- END wrapper -->
 
 <!-- bundle -->
-<script src="/cms/Public/js/app.min.js"></script>
-
-<!-- third party js -->
-<script src="/cms/Public/js/Chart.bundle.js"></script>
-<script src="/cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/cms/Public/js/jquery-jvectormap-world-mill-en.js"></script>
-<!-- third party js ends -->
-
-<!-- demo app -->
-<script src="/cms/Public/js/demo.dashboard.js"></script>
-<!-- end demo js-->
-
-<!-- Include Data Script -->
-<script src="/cms/Public/js/template.js"></script>
-<!--<script src="/cms/Public/script/login-statue.js"></script>-->
-<!--<script src="/cms/Public/script/config.js"></script>-->
-<!--<script src="/cms/Public/script/left-sidebar.js"></script>-->
-<!--<script src="/cms/Public/script/index.js"></script>-->
-
+<script src="/Cms/Public/js/app.min.js"></script>
+<script src="/Cms/Public/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/Cms/Public/js/public.js"></script>
+<script src="/Cms/Public/js/layer.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/Cms/Public/js/main.js" type="module"></script>
+<script src="/Cms/Public/js/product.js"></script>
 </body>
 </html>

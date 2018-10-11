@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务器间接上传</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+    <form class="mt-5 col-6 offset-3" enctype="multipart/form-data" method="post" action="http://up.qiniu.com">
+        <input type="hidden" name="token" id="token">
+        <div class="form-group">
+            <input name="file" class="form-control" type="file" accept="image/jpeg, image/gif, image/png, image/*" multiple="multiple">
+            <span class="form-text text-muted">请上传图片文件</span>
+        </div>
+        <button class="btn btn-primary" type="submit">上传</button>
+    </form>
+</div>
+
+<script src="../css/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    {
+        const btn = document.querySelector(".btn");
+
+        let cloudHost   = 'http://up.qiniu.com';    // 七牛云服务器地址
+        let appHost     = './http.php';               // 本地应用服务器
+
+        let tokenControl = document.querySelector("#token");
+
+        // 默认加载
+        // 获取上传凭证
+        window.onload = () => {
+            axios.get(`${appHost}?t=${Math.random()}`)
+                .then((response)=>{
+                    tokenControl.value = response.data.token;
+                    console.log(response.data);
+                })
+                .catch((error)=>{
+                    console.log(error);
+                });
+        }
+
+
+        // 上传
+        /*btn.onclick = ()=>{
+            let formData = new FormData();
+            let files = document.querySelector("[type='file']").files[0];   // 文件
+            let _token = document.querySelector('#token').value;    // token
+            let param = new URLSearchParams();
+            param.append('data', formData);
+            param.append('token', _token);
+
+            $.post(cloudHost,{
+                file: files,
+                token: _token
+            },(res)=>{
+                console.log(res);
+            });
+        };*/
+
+    }
+</script>
+</body>
+</html>

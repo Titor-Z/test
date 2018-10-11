@@ -1,0 +1,68 @@
+<!-- 引入公共头文件  -->
+<include file="common/header" />
+
+
+<!-- 中间内容 Start.-->
+<div id="container" class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{$store}">我的店</a></li>
+                        <li class="breadcrumb-item"><a href="{$store_edit}">编辑</a></li>
+                        <li class="breadcrumb-item active">店铺照片</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">店铺照片</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+
+        <!-- form Start.-->
+        <form class="hidden" hidden id="j_storePicForm" target="storePicForm" action="{$uploadAction}" enctype="multipart/form-data" method="post">
+            <input name="file" type="file" accept="image/jpeg, image/jpg, image/png">
+            <input name="id" value="{$id}" type="hidden">
+            <input name="class" value="{$class}" type="hidden">
+        </form>
+        <!-- form End. -->
+
+        <div class="col-xl-4">
+            <div id="j_picShow" class="card bg-primary">
+                <div class="card-body pic-card">
+                    <div class="text-center">
+                        <h3 class="font-weight-normal text-white mt-2 mb-3"><i class="mdi mdi-plus mdi-48px"></i></h3>
+                        <a id="j_storePicSelect" href="javascript:void(0)" class="btn btn-outline-light btn-sm mb-1 mt-2" data-subject="j_storePicForm">选择
+                            <i class="mdi mdi-file-image ml-1"></i>
+                        </a>
+                        <a id="j_storePicSave" href="javascript:void(0)" class="btn btn-outline-light btn-sm mb-1 mt-2" data-subject="j_storePicForm" hidden>保存
+                            <i class="mdi mdi-file-image ml-1"></i>
+                        </a>
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div>
+        </div> <!-- 图片 End. -->
+
+        <?php for($i=0; $i< count($pic); $i++){ ?>
+        <div class="col-xl-4">
+            <div class="card pic-box">
+                <img class="card-img-top pic-img" src="{$pic[$i]}" alt="">
+            </div> <!-- end card-->
+        </div> <!-- 图片 End. -->
+        <?php } ?>
+
+
+    </div> <!-- end row -->
+</div>
+<!-- container -->
+
+</div>
+<!-- content -->
+
+<!-- 引入公共头文件  -->
+<include file="common/footer" />

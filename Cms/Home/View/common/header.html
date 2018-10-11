@@ -11,15 +11,15 @@
     <link rel="shortcut icon" href="__PUBLIC__/images/help-icon.svg">
 
     <!-- third party css -->
-    <link href="__PUBLIC__/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!--<link href="__PUBLIC__/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">-->
     <!-- third party css end -->
 
     <!-- App css -->
     <!-- build:css -->
     <link href="__PUBLIC__/css/app.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet">
     <!-- endbuild -->
-    <!-- Vue JS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 
 </head>
 
@@ -59,7 +59,7 @@
                 <!-- 我的店 Start -->
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="seven sev-store"></i>
+                        <i class="mdi mdi-home-account"></i>
                         <span> 我的店 </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -71,6 +71,14 @@
                             <a href="{$storeEdit}">编辑</a>
                         </li>
                     </ul>
+                </li>
+
+                <!-- 产品 -->
+                <li class="side-nav-item">
+                    <a href="{$product}" class="side-nav-link">
+                        <i class="mdi mdi-reproduction"></i>
+                        <span> 产品 </span>
+                    </a>
                 </li>
 
                 <!-- 设置 Start -->

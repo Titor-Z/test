@@ -5,6 +5,8 @@
  * Date: 2018/9/29 10:36 PM
  */
 namespace Store\Admin\Api;
+
+use FileUpload\Validator\Simple;
 use Medoo\Medoo;
 
 
@@ -45,7 +47,7 @@ class Set {
      * - 每个实例类操作当前对象时，都只使用在内存中存放的当前唯一的类。
      * @return null|Set
      */
-    static public function getSet () {
+    public static function getSet () {
         if (self::$set == null) self::$set = new Set();
         return self::$set;
     }

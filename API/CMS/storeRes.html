@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>商户注册</title>
     <link rel="stylesheet" href="less/bootstrap.min.css">
-    <link rel="stylesheet" href="less/main.min.css">
+    <link rel="stylesheet" href="less/main.css">
+    <style>
+        #true,#false {
+            display: none;
+        }
+        #true:target,
+        #false:target {
+            display: block;
+            z-index: 20;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,7 +28,7 @@
 
     <div class="row">
         <section class="content col-12">
-            <form action="">
+            <form target="iframe" action="http://192.168.0.100:81/API/Api/store/create" class="section mt-5" name="form" enctype="multipart/form-data" method="post">
                 <section class="section">
                     <h1 class="h1">商户注册</h1>
                     <div class="form-group">
@@ -45,9 +55,10 @@
                         <textarea name="saddress" class="form-control" rows="10" placeholder="请输入商家住所"></textarea>
                         <span class="form-text text-muted"><i class="info"></i>营业场所</span>
                     </div>
+
                     <div class="form-group">
-                        <input name="scert" class="form-control" type="file" placeholder="请上传营业执照">
-                        <span class="form-text text-muted"><i class="info"></i>营业执照</span>
+                        <input id="file" name="scert" class="form-control" type="file" placeholder="请上传营业执照" required>
+                        <span id="tip" class="form-text text-muted"><i class="info"></i>营业执照</span>
                     </div>
                 </section>
 
@@ -79,96 +90,95 @@
                         <span class="form-text text-muted"><i class="info"></i>付款方式</span>
                     </div>
 
-                    <button id="submit" class="btn btn-primary col-4" type="button">注册</button>
+                    <button name="save" id="save" class="btn btn-primary col-4" type="button">注册</button>
                 </section>
             </form>
         </section>
     </div>
+
+    <section id="true" class="section img-section text-center">
+        <img class="img-section-img" src="images/success.svg" alt="成功">
+        <h2 class="j-msg">注册成功</h2>
+        <a class="btn btn-primary j-go-home" href="javascript:void(0)">返回控制台</a>
+    </section>
+
+    <section id="false" class="section img-section text-center">
+        <img class="img-section-img" src="images/error.svg" alt="成功">
+        <h2 class="j-msg">注册失败</h2>
+        <a class="btn btn-outline-dark" href="javascript:window.history(-1);">重新注册</a>
+        <a class="btn btn-primary j-go-home" href="javascript:void(0)">返回控制台</a>
+    </section>
 </div>
+
+<iframe name="iframe" src="#" frameborder="0" class="col-12 hidden"></iframe>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/public.js"></script>
-<script>
-    (function () {
-        var user_res_control = $("[name='mobile']"),
-            submit = $("#submit");
-        const API_HOST = 'http://192.168.0.100:81/API/Api/';
+<script type="module">
+    import { home, api_host } from './js/main.js';
+    $(".return-btn").attr('href', `${home}`);
+    $(".j-go-home").attr("href",`${home}`)
 
+    {
 
-        // 商家信息检索
-        user_res_control.blur(function () {
-            var data = {
-                'mobile': valSet(user_res_control)
+        let btn = $("#save");
+        let userControl = $("[name='mobile']");
+
+        // 商家手机号验证：
+        userControl.blur(()=>{
+            let _data = {
+                'mobile': valSet(userControl)
             };
+            if (nullSet([userControl]) === false) return false;
+            removeArrNull(_data);
 
-            if (nullSet([user_res_control]) === false) {
-                return false;
-            }
-            removeArrNull(data);
-
-            $.post(API_HOST + 'user/has', {'data': data}, function (result) {
-                resBindControl(user_res_control, result);
+            $.post(`${api_host}user/has`, {'data': _data}, function (result) {
+                resBindControl(userControl, result);
                 if (result.state === false) {
-                    errorState(user_res_control, result.text);
-                    submit.attr('disabled', true);
+                    errorState(userControl, result.text);
+                    btn.attr('disabled', true);
                     return false;
                 } else {
-                    successState(user_res_control, result.text);
-                    submit.attr('disabled', false);
+                    successState(userControl, result.text);
+                    btn.attr('disabled', false);
                 }
             });
-        });
+        }); // ------------------------ 商家手机号验证 完成 ------------------------ //
 
-
+        let pulse = 0;
         // 数据提交
-        submit.click(function () {
+        btn.click( () => {
 
-            var user_res_control = $("[name='mobile']"),
-                password    = $("[name='password']"),
-                sname       = $("[name='sname']"),
-                snumber     = $("[name='snumber']"),
-                saddress    = $("[name='saddress']"),
-                scert       = $("[name='scert']"),
-                start_time  = $("[name='start-time']"),
-                end_time    = $("[name='end-time']"),
-                product     = $("[name='product']"),
-                pay_way     = $("[name='pay-way']");
+            pulse = 1;
 
-            var data = {
-                mobile : valSet(user_res_control),
-                password : valSet(password),
-                store_name: valSet(sname),
-                store_number: valSet(snumber),
-                store_address: valSet(saddress),
-                store_cert: valSet(scert),
-                start_time: valSet(start_time),
-                end_time: valSet(end_time),
-                product: valSet(product),
-                pay_way: valSet(pay_way),
-            };
+            let user_res_control = $("[name='mobile']"),
+                password    = $("[name='password']");
 
-            if (nullSet([user_res_control,password])===false){
-                return false;
-            }
+            if (nullSet([user_res_control,password])===false) return false;
 
-            removeArrNull(data);
+            let form = document.querySelector("[name='form']");
+            form.submit();
+            btn.attr('disabled', true);
 
-            $.post(API_HOST + 'store/create', {data: data}, function (result) {
-                if (result.state === true) {
-                    submit.attr('disabled', true);
-                    window.location.href = 'result.html#true';
+        }); // ------------------------ btn click 完成 ------------------------ //
+
+        // 提交结果返回：
+        let frame = document.querySelector("[name='iframe']");
+        frame.onload = () => {
+            if ( pulse > 0 ) {
+                let body =frame.contentWindow.document;
+                let content = body.querySelector("body").textContent;
+                let result = JSON.parse(content);
+                if (result.state == true) {
+                    window.location.href = '#true';
                 }else{
-                    submit.attr('disabled', false);
-                    window.location.href = 'result.html#false';
+                    window.location.href = '#false';
                 }
-                console.log(result);
-            });
+                $(".j-msg").text(result.msg);
+            }
+        } // ------------------------ 提交结果返回 ------------------------ //
 
-
-        });
-
-
-    })();
+    }
 </script>
 
 </body>
