@@ -55,7 +55,6 @@ class Upload {
         return self::$setting["path"];
     }
 
-
     /**
      * 初始化上传目录
      */
@@ -129,7 +128,6 @@ class Upload {
         }
     }
 
-
     // 写入数据库
     public function saveToDB(array $data = null) {
         $data = array_filter($data);
@@ -161,6 +159,25 @@ class Upload {
                 'store_id' => $data['id']
             ]);
         }
+    }
+
+    public function saveProductToDB($table, $data) {
+        if (!isset($table)) throw new \Exception("没有指定 要写入的表");
+        if (!isset($data['id'])) throw new \Exception("没有指定 产品ID");
+        if (!isset($data['file'])) throw new \Exception("没有传入 File");
+
+
+        $dbPic = $this->db->get($table, 'pic', [
+            'id' => $data['id']
+        ]);
+
+        $pic = $dbPic.$data['file']['name'].'|';
+
+        return $this->db->update($table,[
+            "pic" => $pic
+        ], [
+            'id' => $data['id']
+        ]);
     }
 
 

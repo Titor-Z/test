@@ -58,12 +58,12 @@
                             <ul class="metismenu side-nav">
 
                                 <li class="side-nav-item">
-                                    <a href="javascript:void(0)" class="side-nav-link text-dark">
+                                    <a href=<?php echo $nav_product_bash.'?id='.I('id'); ?> class="side-nav-link text-dark">
                                         <span> 基本设置 </span>
                                     </a>
                                 </li>
                                 <li class="side-nav-item">
-                                    <a href="<?php echo ($nav_storePic); ?>" class="side-nav-link text-dark">
+                                    <a href=<?php echo $nav_product_pic.'?id='.I('id'); ?> class="side-nav-link text-dark">
                                         <span> 产品照片 </span>
                                     </a>
                                 </li>
@@ -258,5 +258,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/Cms/Public/js/main.js" type="module"></script>
 <script src="/Cms/Public/js/product.js"></script>
+<script src="/Cms/Public/js/product-upload.js" type="module"></script>
 </body>
 </html>

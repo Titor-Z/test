@@ -349,5 +349,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/Cms/Public/js/main.js" type="module"></script>
 <script src="/Cms/Public/js/product.js"></script>
+<script src="/Cms/Public/js/product-upload.js" type="module"></script>
 </body>
 </html>

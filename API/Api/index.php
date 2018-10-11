@@ -289,5 +289,68 @@ Flight::route('POST /user/upload', function (){
 
 });
 
+// 用户产品上传
+Flight::route('POST /user/product/upload', function () {
+    if ($_FILES['pFile']) {
+        $data = [
+            'id'    => $_POST['id'],       // 从前端获得的产品 ID
+            'user'  => $_POST['user'],       // 从前端获得的产品 ID
+            'class' => $_POST['class'], // 从前端获得的保存目录
+            'file'  => $_FILES['pFile']  // 从前端获得的文件
+        ];
+
+        // 上传
+        $upload = new Upload();
+        Upload::setPath('./Upload/'.$data['user'].DIRECTORY_SEPARATOR.$data['class']);
+        Upload::setSize('10M');
+        $upload->pathResolver();
+
+        try{
+            $result = @$upload->fileUpload($data['file'],date('Ymdhis'));
+        }catch (Exception $e) {
+            Flight::json([
+                'state' => false,
+                'msg' => '上传失败'
+            ]);
+        }
+
+
+        // 写入数据库
+        $info = Upload::getUploadInfo();
+        try{
+            $saveCallBack = $upload->saveProductToDB('product_hotel',[
+                'id' => $data['id'],        // 产品 ID
+                'class'=> $data['class'],   // 保存分类
+                'file' => $info             // 保存的文件数据
+            ]);
+        }catch (Exception $e) {
+            $upload->fileDel($info);
+            Flight::json([
+                'state' => false,
+                'msg' => '上传失败'
+            ]);
+        }
+
+        if ($saveCallBack) {
+            Flight::json([
+                'state' => true,
+                'msg' => '上传成功'
+            ]);
+        } else {
+            $upload->fileDel($info);
+            Flight::json([
+                'state' => false,
+                'msg' => '上传失败'
+            ]);
+        }
+    }
+    else{
+        Flight::json([
+            'state' => false,
+            'msg' => '请选择文件'
+        ]);
+    }
+});
+
 # 启动应用
 Flight::start();
