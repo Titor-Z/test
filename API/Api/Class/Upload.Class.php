@@ -96,6 +96,7 @@ class Upload {
         }
     }
 
+    // 文件名生成器：
     protected function fileNameGenerator($oldName,$fileName = null) {
         if ($fileName == null || !isset($fileName)) {
             return $oldName;
@@ -105,6 +106,7 @@ class Upload {
         }
     }
 
+    // 更改文件名：
     public function changeFileName($fileName=null) {
         if (!$fileName == null) {
             $path = self::getUploadInfo('path');
@@ -120,6 +122,7 @@ class Upload {
         return self::$factory = new Upload();
     }
 
+    // 返回当前文件的上传信息（保存到文件中后的信息）：
     public static function getUploadInfo($key = null) {
         if ($key == null || !isset($key)) {
             return self::$info;
@@ -161,6 +164,7 @@ class Upload {
         }
     }
 
+    // 保存产品信息到数据库：
     public function saveProductToDB($table, $data) {
         if (!isset($table)) throw new \Exception("没有指定 要写入的表");
         if (!isset($data['id'])) throw new \Exception("没有指定 产品ID");

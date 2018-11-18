@@ -1,4 +1,4 @@
-let home = `http://192.168.0.100:81/API/CMS/`;
-let api_host = `http://192.168.0.100:81/API/Api/`;
+let home = `http://localhost/API/CMS/`;
+let api_host = `http://localhost/API/Api/`;
 
 export {home, api_host};

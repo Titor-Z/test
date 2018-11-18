@@ -5,7 +5,8 @@ require_once "./Class/autoLoad.php";
 use Store\Admin\Api\Admin,
     Store\Admin\Api\User,
     Store\Admin\Api\Store,
-    Store\Admin\Api\Upload;
+    Store\Admin\Api\Upload,
+    Store\Admin\Api\Product;
 
 
 /*
@@ -350,6 +351,93 @@ Flight::route('POST /user/product/upload', function () {
             'msg' => '请选择文件'
         ]);
     }
+});
+
+
+
+
+
+
+// 微信接口
+
+// 提交用户手机号，获取店铺信息
+Flight::route('GET /weixin/store', function (){
+    // 获取get的user(手机号)
+    $user = $_GET['user'];
+
+    // 检出用户id
+    $u = new User();
+    try{
+        $userid = $u->getUser($user,'id');
+    }catch (Exception $e) {
+        $userid = null;
+    }
+
+    // 检出store信息
+    $store = new Store();
+    $storeInfo = $store->getStore($userid);
+
+
+    // 检出store pic 信息
+    $storeId = $storeInfo["id"];
+    $pic = $store->getStorePic($storeId);
+
+    Flight::json( array_merge($storeInfo, $pic) );
+
+});
+
+// 传入用户 ID, 输出全部产品
+Flight::route("GET /weixin/store/product", function () {
+    // 检出用户id
+    $u = new User();
+    try{
+        $user = $_GET['user'];
+        $userID = $u->getUser($user,'id');
+    }catch (Exception $e) {
+        $userid = null;
+    }
+
+    // 检出商铺ID
+    $store = new Store();
+    try{
+        $storeID = $store->getStoreID($userID);
+    }catch (Exception $e) {
+        return Flight::json([]);
+    }
+
+    // 检出商品信息
+    $product = new Product();
+    try {
+        $outDB = $product->getProduct($storeID, ['id','name','price','pic']);
+    }catch (Exception $e) {
+        return Flight::json([]);
+    }
+
+    // 输出商品结果集
+    if($outDB) {
+        $outDB['user_id'] = $userID;
+        return Flight::json($outDB);
+    }else{
+        return Flight::json([]);
+    }
+
+});
+
+
+// 传入产品id，输出产品信息
+Flight::route("GET /weixin/store/product/@id", function ($id){
+     $product = new Product();
+     try{
+         $outDB = $product->getProductOnly($id);
+     }catch (Exception $e) {
+         return Flight::json([]);
+     }
+
+     if($outDB) {
+         Flight::json($outDB);
+     }else{
+         Flight::json([]);
+     }
 });
 
 # 启动应用
